@@ -27,7 +27,7 @@ def chat_existing(thread_id: str, request: ChatRequest, memory=Depends(get_memor
     response = service.chat(request.message, thread_id)
 
     return {
-        "response": response,
+         **response,
         "thread_id": thread_id
     }
     
