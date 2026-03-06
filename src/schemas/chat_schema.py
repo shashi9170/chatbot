@@ -6,9 +6,4 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     response: str
-
-# from typing import List, TypedDict
-# from langchain_core.messages import BaseMessage
-
-# class ChatState(TypedDict):
-#     messages: List[BaseMessage]
+    # thread_id: str

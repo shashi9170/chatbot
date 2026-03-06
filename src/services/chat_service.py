@@ -18,7 +18,7 @@ class ChatService:
 
         last_message = result["messages"][-1]
         content = last_message.content
-
+        print(result)
         # Gemini sometimes returns structured content
         if isinstance(content, list):
             return content[0]["text"]
