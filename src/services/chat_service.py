@@ -7,7 +7,7 @@ class ChatService:
     def __init__(self, memory):
         self.graph = build_graph(memory)
 
-    def chat(self, message, thread_id):
+    def chat(self, message: str, thread_id: str) -> str:
 
         config = {"configurable": {"thread_id": thread_id}}
 
@@ -16,4 +16,11 @@ class ChatService:
             config=config
         )
 
-        return result["messages"][-1].content
+        last_message = result["messages"][-1]
+        content = last_message.content
+
+        # Gemini sometimes returns structured content
+        if isinstance(content, list):
+            return content[0]["text"]
+
+        return content

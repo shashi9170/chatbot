@@ -11,5 +11,5 @@ def chat_endpoint(request: ChatRequest, memory=Depends(get_memory_context)):
     
     service = ChatService(memory)
     response = service.chat(request.message, request.thread_id)
-    
-    return ChatResponse(response=response)
+
+    return {"response": response}
