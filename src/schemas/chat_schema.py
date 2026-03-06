@@ -6,4 +6,4 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     response: str
-    # thread_id: str
+    thread_id: str
