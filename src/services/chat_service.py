@@ -18,9 +18,15 @@ class ChatService:
 
         last_message = result["messages"][-1]
         content = last_message.content
-        print(last_message.usage_metadata)
+        metadata = last_message.response_metadata
+        
         # Gemini sometimes returns structured content
         if isinstance(content, list):
             return content[0]["text"]
-
-        return content
+        
+        usage = metadata.get("usage_metadata", {})
+        
+        return {
+            "response": content,
+            "usage": usage
+        }
